@@ -33,7 +33,7 @@ helm.sh/chart: {{ include "demo-app.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- with .Values.labels }}
+{{ with .Values.labels }}
 {{- toYaml . }}
 {{- end }}
 {{- end }}

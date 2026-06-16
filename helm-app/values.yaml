@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: alpine
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+
+ingress:
+  host: demo.k3d.localhost
+  entryPoints:
+    - web
+    - websecure
+
+page:
+  title: "ArgoCD Demo"
+  backgroundColor: "#1a1a2e"
+  accentColor: "#e94560"
+  message: "Déployé avec ArgoCD 🚀"
+  version: "v1"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 32Mi
+  limits:
+    cpu: 100m
+    memory: 64Mi
+
+labels:
+  app.kubernetes.io/part-of: demo

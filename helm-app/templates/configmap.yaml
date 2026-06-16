@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "demo-app.fullname" . }}-html
+  labels:
+    {{- include "demo-app.labels" . | nindent 4 }}
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ .Values.page.title }}</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: 'Segoe UI', sans-serif;
+          background: {{ .Values.page.backgroundColor }};
+          color: #eee;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .card {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid {{ .Values.page.accentColor }};
+          border-radius: 16px;
+          padding: 48px 64px;
+          text-align: center;
+          max-width: 560px;
+        }
+        .badge {
+          background: {{ .Values.page.accentColor }};
+          color: #fff;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          padding: 4px 14px;
+          border-radius: 20px;
+          display: inline-block;
+          margin-bottom: 24px;
+        }
+        h1 {
+          font-size: 2.4rem;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: #fff;
+        }
+        .message {
+          font-size: 1.2rem;
+          opacity: 0.8;
+          margin-bottom: 32px;
+        }
+        .meta {
+          font-size: 0.85rem;
+          opacity: 0.4;
+          line-height: 2;
+        }
+        .version {
+          display: inline-block;
+          margin-top: 24px;
+          padding: 6px 18px;
+          border: 1px solid {{ .Values.page.accentColor }};
+          border-radius: 8px;
+          color: {{ .Values.page.accentColor }};
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <div class="badge">ArgoCD GitOps</div>
+        <h1>{{ .Values.page.title }}</h1>
+        <p class="message">{{ .Values.page.message }}</p>
+        <div class="meta">
+          <div>Namespace : <strong>{{ .Release.Namespace }}</strong></div>
+          <div>Release : <strong>{{ .Release.Name }}</strong></div>
+          <div>Host : <strong>{{ .Values.ingress.host }}</strong></div>
+        </div>
+        <div class="version">{{ .Values.page.version }}</div>
+      </div>
+    </body>
+    </html>

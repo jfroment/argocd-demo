@@ -19,6 +19,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  annotations:
+    app.openshift.io/route-url: 'https://nginx.k3d.localhost'
 spec:
   selector:
     matchLabels:

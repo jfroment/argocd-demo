@@ -16,7 +16,7 @@ ingress:
 
 page:
   title: "ArgoCD Demo"
-  backgroundColor: "#1a1a2e"
+  backgroundColor: "#ffffff"
   accentColor: "#e94560"
   message: "Déployé avec ArgoCD 🚀"
   version: "v1"

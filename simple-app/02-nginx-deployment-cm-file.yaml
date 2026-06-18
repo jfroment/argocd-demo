@@ -42,7 +42,9 @@ spec:
             mountPath: /usr/share/nginx/html
         env:
           - name: MYVARIABLE
-            value: "Hello"
+            value: "Bonjour"
+          - name: foo
+            value: "bar"
       volumes:
         - name: nginx-config-volume
           configMap:
